@@ -3,7 +3,8 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { AsciiMountains } from "./AsciiMountains";
+import { NetworkGraph } from "./NetworkGraph";
+import { Profile } from "@/types";
 
 const LINES = [
   { text: "// university of denver", className: "text-xs text-white/25 tracking-widest uppercase" },
@@ -44,7 +45,7 @@ function useTypingSequence(lines: typeof LINES) {
   return { lineIdx, charIdx, done };
 }
 
-export function Hero() {
+export function Hero({ profiles }: { profiles: Profile[] }) {
   const { lineIdx, charIdx, done } = useTypingSequence(LINES);
 
   return (
@@ -111,8 +112,8 @@ export function Hero() {
           </AnimatePresence>
         </div>
 
-        {/* Right: ASCII mountains — desktop only */}
-        <AsciiMountains visible={done} />
+        {/* Right: interactive network graph — desktop only */}
+        <NetworkGraph profiles={profiles} visible={done} />
 
       </div>
     </section>

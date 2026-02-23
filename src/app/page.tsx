@@ -29,8 +29,8 @@ export default async function Home() {
         </Link>
       </nav>
 
-      {/* Hero — typing animation */}
-      <Hero />
+      {/* Hero — typing animation + network graph */}
+      <Hero profiles={profiles} />
 
       {/* Directory */}
       <section id="directory" className="mx-auto max-w-6xl px-4 sm:px-6 pb-20">
