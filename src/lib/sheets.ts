@@ -6,11 +6,15 @@ const SHEET_NAME = "Sheet1";
 function getAuth() {
   return new google.auth.GoogleAuth({
     credentials: {
-      client_email: process.env.GOOGLE_CLIENT_EMAIL,
-      private_key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, "\n"),
+      client_email: process.env.GOOGLE_CLIENT_EMAIL?.trim(),
+      private_key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, "\n").trim(),
     },
     scopes: ["https://www.googleapis.com/auth/spreadsheets"],
   });
+}
+
+function sheetId() {
+  return process.env.GOOGLE_SHEET_ID?.trim();
 }
 
 export async function getProfiles(): Promise<Profile[]> {
@@ -18,7 +22,7 @@ export async function getProfiles(): Promise<Profile[]> {
   const sheets = google.sheets({ version: "v4", auth });
 
   const res = await sheets.spreadsheets.values.get({
-    spreadsheetId: process.env.GOOGLE_SHEET_ID,
+    spreadsheetId: sheetId(),
     range: `${SHEET_NAME}!A2:K`,
   });
 
@@ -44,7 +48,7 @@ export async function addProfile(data: Omit<Profile, never>): Promise<void> {
   const sheets = google.sheets({ version: "v4", auth });
 
   await sheets.spreadsheets.values.append({
-    spreadsheetId: process.env.GOOGLE_SHEET_ID,
+    spreadsheetId: sheetId(),
     range: `${SHEET_NAME}!A:K`,
     valueInputOption: "RAW",
     requestBody: {
