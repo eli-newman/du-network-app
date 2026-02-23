@@ -49,7 +49,7 @@ export async function addProfile(data: Omit<Profile, never>): Promise<void> {
 
   await sheets.spreadsheets.values.append({
     spreadsheetId: sheetId(),
-    range: `${SHEET_NAME}!A:K`,
+    range: `${SHEET_NAME}!A1`,
     valueInputOption: "RAW",
     requestBody: {
       values: [
