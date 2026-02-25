@@ -2,6 +2,7 @@ import Link from "next/link";
 import { getProfiles } from "@/lib/sheets";
 import { Directory } from "@/components/Directory";
 import { Hero } from "@/components/Hero";
+import { MobileGraph } from "@/components/MobileGraph";
 import { Profile } from "@/types";
 
 export const revalidate = 60;
@@ -38,6 +39,9 @@ export default async function Home() {
           <Directory profiles={profiles} />
         </div>
       </section>
+
+      {/* Network graph — mobile only, bottom of page */}
+      <MobileGraph profiles={profiles} />
 
       {/* Footer */}
       <footer className="border-t border-white/[0.06] px-4 sm:px-6 py-6">

@@ -50,7 +50,7 @@ export function Hero({ profiles }: { profiles: Profile[] }) {
 
   return (
     <section className="px-4 sm:px-6 pt-14 sm:pt-20 pb-12 sm:pb-16">
-      <div className="mx-auto max-w-6xl flex items-center gap-16 lg:gap-24">
+      <div className="mx-auto max-w-6xl lg:flex lg:items-center lg:gap-24">
 
         {/* Left: typing content */}
         <div className="flex-1 min-w-0">
@@ -113,7 +113,9 @@ export function Hero({ profiles }: { profiles: Profile[] }) {
         </div>
 
         {/* Right: interactive network graph — desktop only */}
-        <NetworkGraph profiles={profiles} visible={done} />
+        <div className="hidden lg:block w-[320px] h-[260px] shrink-0">
+          <NetworkGraph profiles={profiles} visible={done} />
+        </div>
 
       </div>
     </section>

@@ -219,7 +219,7 @@ export function NetworkGraph({ profiles, visible }: Props) {
   }, [initGraph]);
 
   return (
-    <div className="hidden lg:block relative shrink-0 w-[320px] h-[260px]">
+    <div className="relative shrink-0 w-full h-full">
       <canvas
         ref={canvasRef}
         className="w-full h-full"

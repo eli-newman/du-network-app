@@ -14,17 +14,23 @@ function Avatar({ name, photoUrl }: { name: string; photoUrl: string }) {
     .slice(0, 2);
 
   if (photoUrl) {
+    const isDataUrl = photoUrl.startsWith("data:");
     return (
       <div className="relative h-9 w-9 shrink-0 overflow-hidden rounded-sm ring-1 ring-white/10">
-        <Image
-          src={photoUrl}
-          alt={name}
-          fill
-          className="object-cover"
-          onError={(e) => {
-            (e.target as HTMLImageElement).style.display = "none";
-          }}
-        />
+        {isDataUrl ? (
+          /* eslint-disable-next-line @next/next/no-img-element */
+          <img src={photoUrl} alt={name} className="h-full w-full object-cover" />
+        ) : (
+          <Image
+            src={photoUrl}
+            alt={name}
+            fill
+            className="object-cover"
+            onError={(e) => {
+              (e.target as HTMLImageElement).style.display = "none";
+            }}
+          />
+        )}
       </div>
     );
   }
