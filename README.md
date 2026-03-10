@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# builder.network
 
-## Getting Started
+An open-source builder directory for universities. Show off what students at your school are working on — startups, research, projects, and open source.
 
-First, run the development server:
+**Live example:** [du-network.vercel.app](https://du-network.vercel.app) (University of Denver)
+
+## Features
+
+- Public directory of student builders with search and filters
+- Join form with photo upload, camera capture, and URL paste
+- Interactive force-directed network graph visualization
+- Printable recruitment poster with auto-generated QR code (`/poster`)
+- Google Sheets as the database — no server or DB setup needed
+- Manual approval workflow (flip a cell to `TRUE`)
+- Mobile-responsive, dark theme, typing animation
+
+## Launch This at Your School
+
+**Takes ~30 minutes.** See **[SETUP.md](SETUP.md)** for the full step-by-step guide.
+
+The short version:
+
+1. **Fork this repo**
+2. **Edit one file** — `src/config/school.ts` — with your school name, colors, and copy
+3. **Update 2 CSS variables** in `src/app/globals.css` to match your school colors
+4. **Create a Google Sheet** with the required columns and a service account
+5. **Deploy to Vercel** with your 3 env vars
 
 ```bash
+npm install
+cp .env.example .env.local  # fill in your Google Sheets credentials
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- [Next.js](https://nextjs.org) 16 (App Router, ISR)
+- [Tailwind CSS](https://tailwindcss.com) 4
+- [Framer Motion](https://www.framer.com/motion/)
+- [Google Sheets API](https://developers.google.com/sheets/api)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project Structure
 
-## Learn More
+```
+src/
+├── config/school.ts       ← all branding lives here
+├── app/
+│   ├── page.tsx            ← homepage + directory
+│   ├── join/page.tsx       ← join form
+│   ├── poster/page.tsx     ← printable poster
+│   └── api/submit/route.ts ← form submission
+├── components/             ← Hero, Directory, ProfileCard, NetworkGraph
+├── lib/sheets.ts           ← Google Sheets integration
+└── types/index.ts          ← Profile type
+```
 
-To learn more about Next.js, take a look at the following resources:
+## License
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT — use it, fork it, make it yours.
