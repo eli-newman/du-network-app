@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { school } from "@/config/school";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -13,13 +14,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "du.network — Builders at the University of Denver",
-  description:
-    "A directory of University of Denver students who are building things — startups, projects, research, and open source.",
+  title: school.metadata.title,
+  description: school.metadata.description,
   openGraph: {
-    title: "du.network",
-    description: "Find the builders at the University of Denver.",
-    siteName: "du.network",
+    title: school.metadata.ogTitle,
+    description: school.metadata.ogDescription,
+    siteName: school.domain,
   },
 };
 

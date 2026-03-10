@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { ArrowLeft, Upload, Camera, Link2, X } from "lucide-react";
+import { school } from "@/config/school";
 
 interface FormData {
   name: string;
@@ -185,7 +186,7 @@ export default function JoinPage() {
             you&apos;re on the list.
           </p>
           <p className="text-sm text-white/35">
-            your profile is live on du.network.
+            {school.join.successMessage}
           </p>
           <Link
             href="/"
@@ -209,7 +210,7 @@ export default function JoinPage() {
             className="inline-flex items-center gap-1.5 text-xs text-white/25 hover:text-white/55 transition-colors"
           >
             <ArrowLeft size={11} />
-            du.network
+            {school.domain}
           </Link>
         </div>
 
@@ -219,7 +220,7 @@ export default function JoinPage() {
           add your profile
         </h1>
         <p className="text-xs text-white/30 mb-10">
-          university of denver builders only.
+          {school.join.restriction}
         </p>
 
         <form onSubmit={submit} className="space-y-6 sm:space-y-8">

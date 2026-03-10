@@ -3,8 +3,9 @@
 @theme inline {
   --color-background: #090909;
   --color-foreground: #d4d4d4;
-  --color-gold: #b8822e;
-  --color-crimson: #862334;
+  /* ⚠️  Update these to match your school colors in src/config/school.ts */
+  --color-gold: #b8822e;       /* school.colors.secondary */
+  --color-crimson: #862334;    /* school.colors.primary */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }

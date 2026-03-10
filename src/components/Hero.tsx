@@ -5,11 +5,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { NetworkGraph } from "./NetworkGraph";
 import { Profile } from "@/types";
+import { school } from "@/config/school";
 
 const LINES = [
-  { text: "// university of denver", className: "text-xs text-white/25 tracking-widest uppercase" },
-  { text: "find the builders", className: "text-2xl sm:text-3xl font-medium text-white/90 tracking-tight" },
-  { text: "at your school.", className: "text-2xl sm:text-3xl font-medium text-white/40 tracking-tight" },
+  { text: school.hero.tagline, className: "text-xs text-white/25 tracking-widest uppercase" },
+  { text: school.hero.headline[0], className: "text-2xl sm:text-3xl font-medium text-white/90 tracking-tight" },
+  { text: school.hero.headline[1], className: "text-2xl sm:text-3xl font-medium text-white/40 tracking-tight" },
 ];
 
 const CHAR_DELAY = 38;
@@ -90,8 +91,7 @@ export function Hero({ profiles }: { profiles: Profile[] }) {
                 className="space-y-6"
               >
                 <p className="text-sm text-white/35 leading-relaxed max-w-sm">
-                  a directory of DU students shipping startups,
-                  research, projects, and open source work.
+                  {school.hero.description}
                 </p>
                 <div className="flex items-center gap-5">
                   <Link

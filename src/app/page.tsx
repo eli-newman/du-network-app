@@ -4,6 +4,7 @@ import { Directory } from "@/components/Directory";
 import { Hero } from "@/components/Hero";
 import { MobileGraph } from "@/components/MobileGraph";
 import { Profile } from "@/types";
+import { school } from "@/config/school";
 
 export const revalidate = 60;
 
@@ -20,7 +21,7 @@ export default async function Home() {
       {/* Nav */}
       <nav className="flex items-center justify-between px-4 sm:px-6 py-4 border-b border-white/[0.06]">
         <span className="text-sm text-crimson font-medium tracking-tight">
-          du.network
+          {school.domain}
         </span>
         <Link
           href="/join"
@@ -46,7 +47,7 @@ export default async function Home() {
       {/* Footer */}
       <footer className="border-t border-white/[0.06] px-4 sm:px-6 py-6">
         <p className="text-xs text-white/20">
-          <span className="text-crimson/60">du.network</span> ·{" "}
+          <span className="text-crimson/60">{school.domain}</span> ·{" "}
           <Link href="/join" className="hover:text-white/40 transition-colors">
             add yourself
           </Link>
